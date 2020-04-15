@@ -9,7 +9,13 @@
 		<title>Distributed Systems</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../assets/css/main.css" />
+		<link rel="stylesheet" href="../assets/css/main.css" />]
+    <style>
+      img.fifty_p {
+        height: 60%;
+        width: 60%;
+        }
+    </style>
 	</head>
 	<body class="is-preload">
 
@@ -21,17 +27,34 @@
 						<div class="inner">
 
 							<!-- Header -->
+              <!--
 								<header id="header">
-									<small><button onclick="window.location.href = '../Distributed_sys.html';">Go To Distributed System</button><small>
+									<small><button onclick="window.location.href = '../Graph.html';">Go To Research</button><small>
 								</header>
-
+                -->
 
 							<!-- Content -->
 								<section>
 									<header class="main">
-										<h1>Communication</h1>
+										<h2>Bellman-Ford Algorithm</h2>
 									</header>
-
+                  <article>
+                    The Bellman–Ford algorithm is an algorithm that computes shortest paths from a single source vertex to all of the other vertices in a weighted digraph.
+                    Here is the pseudo code.
+                  </article>
+                  <img class = fifty_p two src="../images/paper_graph/bellman_pseudo_code.png">
+                  <article>
+                    In a short word, relax means use edge(u,v) to update value of V by U.
+                    For each iteration 1 to |V|-1, for each edge in the graph, we update the destination vertex value.</br>
+                    If in iteration |V| it still exists a possible "relax" operation,
+                     there is at least one negative loop in the graph. We can not use Dijkstra algorithm any more with that loops.
+                     I attached two examples in the following, the first one is a graph only with negative weights.
+                     The second one has negative loops so I only apply the bellman-Ford one.</br>
+                   </article>
+                  <img class = fifty_p two src="../images/paper_graph/two_example.png">
+                  <article>
+                  In next blog, I will write about how to make these two algorithms parallel.
+                  </article>
 								</section>
 
 						</div>
@@ -51,7 +74,7 @@
 										<li><a href="../index.html">Homepage</a></li>
 										<li><a href="../Distributed_sys.html" class = "opener">Distributed Systems</a>
 											<ul>
-												<li><a href="Communication.html">Communication</a></li>
+												<li><a href="../subwebsites_of_dist/Communication.html">Communication</a></li>
                         <!--
 												<li><a href="#">Ipsum Adipiscing</a></li>
 												<li><a href="#">Tempus Magna</a></li>
