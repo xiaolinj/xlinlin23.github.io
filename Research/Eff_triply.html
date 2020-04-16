@@ -6,16 +6,15 @@
 -->
 <html>
 	<head>
-		<title>Bellman-Ford Algorithm</title>
+		<title>Efficient Distributed Graph Analytics using Triply Compressed Sparse Format</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../assets/css/main.css" />
-    <style>
-      img.fifty_p {
-        height: 60%;
-        width: 60%;
-        }
-    </style>
+		<style>
+		h2{
+			margin-top: 0.1em;
+		}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -26,32 +25,14 @@
 					<div id="main">
 						<div class="inner">
 
-
-
-
 								<section>
-<li><a href="../Graph.html" class="btn btn-primary btn-xs">go back to research</a></li>
-									<header class="main">
-										<h2>Bellman-Ford Algorithm</h2>
-									</header>
-                  <article>
-                    The Bellman–Ford algorithm is an algorithm that computes shortest paths from a single source vertex to all of the other vertices in a weighted digraph.
-                    Here is the pseudo code.
-                  </article>
-                  <img class = fifty_p two src="../images/paper_graph/bellman_pseudo_code.png">
-                  <article>
-                    In a short word, relax means use edge(u,v) to update value of V by U.
-                    For each iteration 1 to |V|-1, for each edge in the graph, we update the destination vertex value.</br>
-                    If in iteration |V| it still exists a possible "relax" operation,
-                     there is at least one negative loop in the graph. We can not use Dijkstra algorithm any more with that loops.
-                     I attached two examples in the following, the first one is a graph only with negative weights.
-                     The second one has negative loops so I only apply the bellman-Ford one.</br>
-                   </article>
-                  <img class = fifty_p two src="../images/paper_graph/two_example.png">
-                  <article>
-                  In next blog, I will write about how to make these two algorithms parallel.
-                  </article>
+									<li><a href="../Graph.html" class="btn btn-primary btn-xs">go back to research</a></li>
+									<div class="content">
 
+									<header class="main">
+										<h2>Efficient Distributed Graph Analytics using Triply Compressed Sparse Format</h2>
+									</header>
+								</div>
 								</section>
 
 						</div>
@@ -69,7 +50,7 @@
 									</header>
 									<ul>
 										<li><a href="../index.html">Homepage</a></li>
-										<li><a href="../Distributed_sys.html" class = "opener">Distributed Systems</a>
+										<li><span class = "opener">Distributed Systems</span>
 											<ul>
 												<li><a href="../subwebsites_of_dist/Communication.html">Communication</a></li>
                         <!--
