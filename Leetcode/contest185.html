@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Contest 185</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<style>
+		h2{
+			margin-top: 0.1em;
+      margin-bottom: 0.1em;
+		}
+    h3{
+			margin-top: 0.01em;
+      margin-bottom: 0.1em;
+		}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+								<section>
+									<li><a href="../Leetcode.html" class="btn btn-primary btn-xs">go back to Leetcode</a></li>
+									<div class="content">
+
+									<header class="main">
+										<h2>Contest 185</h2>
+									</header>
+                  <article>
+                  <h3> 1417. Reformat The String </h3>
+                  <p>
+                  First we need to check the number of characters and numbers.</br>
+                  If the distance between two numbers are greater than 1, then return empty;</br>
+                  Else, find the greater one, use it as the start character of the answer string.
+                  </p>
+                  <h3> 1418. Display Table of Food Orders in a Restaurant </h3>
+                  <p>It is easyunderstanding, but it is hard to choose data stucture. I will use the fastest code with my explaination.
+<pre class="c++-exec">
+<code>class Solution {
+public:
+  vector&ltvector&ltstring&gt&gt displayTable(vector&ltvector&ltstring&gt&gt& orders) {
+    map&ltint, unordered_map&ltstring, int&gt&gt tally;
+    set&ltstring&gt allFoods;
+    for (auto& o : orders) {
+      int tab = stoi(o[1]);
+      string food = o[2];
+      allFoods.insert(food);
+      tally[tab][food]++;
+    }
+    /*We have a map, so we can know each table and the food,number they ordered.
+    tally:
+    |table number(int)| food
+    3                 ["water", 3], ["chicken" 4]...
+    */
+    vector&ltvector&ltstring>> ans;
+    ans.push_back({"Table"});
+    for (auto f : allFoods)
+      ans.back().push_back(f);
+
+    for (auto t : tally) {
+      string tab = to_string(t.first);
+      ans.push_back({tab});
+      for (auto f : allFoods) {
+        //if the food table #tab ordered, push_back the number
+        if (t.second.count(f))
+          ans.back().push_back(to_string((t.second)[f]));
+        else
+          ans.back().push_back("0");
+      }
+    }
+    return ans;
+  }
+};  </code></pre></p>
+<h3> 1419. Minimum Number of Frogs Croaking </h3>
+<h3> 1420. Build Array Where You Can Find The Maximum Exactly K Comparisons </h3>
+</article>
+								</div>
+								</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="../index.html">Homepage</a></li>
+										<li><span class = "opener">Distributed Systems</span>
+											<ul>
+												<li><a href="../subwebsites_of_dist/Communication.html">Communication</a></li>
+                        <!--
+												<li><a href="#">Ipsum Adipiscing</a></li>
+												<li><a href="#">Tempus Magna</a></li>
+												<li><a href="#">Feugiat Veroeros</a></li>
+                        -->
+											</ul>
+											<li><a href="../Graph.html">Research</a></li>
+											<li><a href="../Leetcode.html">Leetcode</a></li>
+									</ul>
+								</nav>
+
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; All rights reserved. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>
