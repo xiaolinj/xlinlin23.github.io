@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Contest 185</title>
+		<title>leftMostColumnWithOne</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../assets/css/main.css" />
@@ -33,57 +33,49 @@
 								<section>
 									<li><a href="../Leetcode.html" class="btn btn-primary btn-xs">go back to Leetcode</a></li>
 									<div class="content">
-
-									<header class="main">
-										<h2>Contest 185</h2>
-									</header>
+										<h2>Left Most Column With One -- 30 days challenge</h2>
                   <article>
-                  <h3> 1417. Reformat The String </h3>
                   <p>
-                  First we need to check the number of characters and numbers.</br>
-                  If the distance between two numbers are greater than 1, then return empty;</br>
-                  Else, find the greater one, use it as the start character of the answer string.
-                  </p>
-                  <h3> 1418. Display Table of Food Orders in a Restaurant </h3>
-                  <p>It is easyunderstanding, but it is hard to choose data stucture. I will use the fastest code with my explaination.
+                  <b>Description</b><br>
+                  In a binary matrix (all elements are 0 and 1), every row is sorted in ascending order (0 to the left of 1).
+                  Find the leftmost column index with a 1 in it.</br>
+                  Example:</br>
+                  Input:</br>
+                  [[0, 0, 0, 1],</br>
+                   [0, 0, 1, 1],</br>
+                   [0, 1, 1, 1],</br>
+                   [0, 0, 0, 0]]</br>
+                  Output: 1</br>
+                  <b>Solution:</b> Search starts from the top right most position. Because <b>every row is sorted</b>,
+                  if current position value is 1, I will go to left position to find the left most index this row and keep it <b>(col--)</b>;</br>
+                  if it is 0, each position before in the same row will always be 0.
+                  I will keep the most left index and keep searching, not this row but the row below <b>(row++)</b>;</br>
+                  With these two operations(← or ↓), if finally the index is still in the last column, we will return -1,
+                  because there isn't any 1 in the binary matrix.</br>
+                  <b>Complexity:</b> In the worst case, we arrive at the left bottom corner, so it is O(r+c).</br>
 <pre class="c++-exec">
 <code>class Solution {
 public:
-  vector&ltvector&ltstring&gt&gt displayTable(vector&ltvector&ltstring&gt&gt& orders) {
-    map&ltint, unordered_map&ltstring, int&gt&gt tally;
-    set&ltstring&gt allFoods;
-    for (auto& o : orders) {
-      int tab = stoi(o[1]);
-      string food = o[2];
-      allFoods.insert(food);
-      tally[tab][food]++;
+    int leftMostColumnWithOne(BinaryMatrix &binaryMatrix) {
+        vector&ltint&gt res = binaryMatrix.dimensions();
+        int row = res[0];
+        int col = res[1];
+        int r = 0, c = col-1;
+        int min_c = col-1;
+        while(r < row && c >=0 ){
+            if(binaryMatrix.get(r,c) == 1)
+            {
+                min_c = min(min_c,c);
+                c--;
+            }
+            else
+                r++;
+        }
+        if(c==col-1 && r == row)
+            return -1;
+        return min_c;
     }
-    /*We have a map, so we can know each table and the food,number they ordered.
-    tally:
-    |table number(int)| food
-    3                 ["water", 3], ["chicken" 4]...
-    */
-    vector&ltvector&ltstring>> ans;
-    ans.push_back({"Table"});
-    for (auto f : allFoods)
-      ans.back().push_back(f);
-
-    for (auto t : tally) {
-      string tab = to_string(t.first);
-      ans.push_back({tab});
-      for (auto f : allFoods) {
-        //if the food table #tab ordered, push_back the number
-        if (t.second.count(f))
-          ans.back().push_back(to_string((t.second)[f]));
-        else
-          ans.back().push_back("0");
-      }
-    }
-    return ans;
-  }
-};  </code></pre></p>
-<h3> 1419. Minimum Number of Frogs Croaking </h3>
-<h3> 1420. Build Array Where You Can Find The Maximum Exactly K Comparisons </h3>
+}; </code></pre></p>
 </article>
 								</div>
 								</section>
