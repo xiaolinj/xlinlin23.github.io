@@ -37,8 +37,81 @@
 								<header>
 								<h2> Custom Sorting in C++ <h2>
 								</header>
+								<a href = "https://en.cppreference.com/w/cpp/algorithm/sort">the cpp reference</a></br>
+								The custom operator condition:
+<b>comparison function object (i.e. an object that satisfies the requirements
+	of Compare) which returns ​true if the first argument is ordered before the second.</b></br>
+	e.g. if we want 9, 8, 7, 6 ..., return i1 > i2; (true, i1 is ahead of i2)</br>
+			 if we want 1, 2, 3, 4 ..., return i1 < i2.</br>
+The signature of the comparison function should be equivalent to the following:</br>
+ bool cmp(const Type1 &a, const Type2 &b);</br>
+While the signature does not need to have const &, the function must not modify the objects passed to it and must be able to accept all values of type (possibly const) Type1 and Type2 regardless of value category (thus, Type1 & is not allowed, nor is Type1 unless for Type1 a move is equivalent to a copy (since C++11)).
+The types Type1 and Type2 must be such that an object of type RandomIt can be dereferenced and then implicitly converted to both of them.</br>
+<strong>My understanding: the object don't need to be const or passed, copy still works, but pass copy or object must have the same answer. And it is dereferenceable. </strong></br>
+Here is a small example adapted from <a href = "https://stackoverflow.com/questions/1380463/sorting-a-vector-of-custom-objects">Stackoverflow.</a> </br>
 
+<pre><code>#include &ltvector&gt
+#include &ltiostream&gt
+#include &ltalgorithm&gt
+using namespace std;
+struct MyStruct
+{
+	int key;
+	std::string stringValue;
 
+	MyStruct(int k, const std::string& s) : key(k), stringValue(s) {}
+};
+
+struct less_than_key
+{
+	inline bool operator() (const MyStruct& struct1, const MyStruct& struct2)
+	{
+		<b>//return true if struct1 ahead of struct2 is custom ordered, here s1 less than s2</b>
+		if(struct1.stringValue.size() != struct2.stringValue.size())
+			return (struct1.stringValue.size() < struct2.stringValue.size());
+		else<b>//string default: regardless of size, just by alphabeta order</b>
+			return struct1.stringValue < struct2.stringValue;
+	}
+};
+struct greater_size
+{
+	inline bool operator() (const MyStruct struct1, const MyStruct struct2)
+	{
+		return struct1.key < struct2.key;
+	}
+};
+
+int main(){
+	std::vector < MyStruct > vec;
+
+	vec.push_back(MyStruct(4, "test"));
+	vec.push_back(MyStruct(3, "aaaaaaaaaa"));
+	vec.push_back(MyStruct(2, "is"));
+	vec.push_back(MyStruct(1, "this"));
+
+	std::sort(vec.begin(), vec.end(), greater_size());<b>//dont forget () </b>
+
+	for(int i = 0; i < vec.size(); i++){
+		MyStruct o = vec[i];
+		cout << o.key << " " << o.stringValue << endl;
+	}
+	return 0;
+}</code></pre>
+<div class="row">
+	<div class = "column">
+greater_size() output:</br>
+1 this</br>
+2 is</br>
+3 aaaaaaaaaa</br>
+4 test</br>
+</div>
+	<div class = "column">
+less_than_key() output:</br>
+2 is</br>
+4 test</br>
+1 this</br>
+3 aaaaaaaaaa</br>
+</div>
 							</article>
 							</div>
 								</section>
