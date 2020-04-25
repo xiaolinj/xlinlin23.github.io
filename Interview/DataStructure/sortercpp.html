@@ -14,6 +14,7 @@
 		h2{
 			margin-bottom: 0.1em;
 		}h3{
+			margin-top: 0.3em;
 			margin-bottom: 0.1em;
 		}
 		</style>
@@ -112,6 +113,12 @@ less_than_key() output:</br>
 1 this</br>
 3 aaaaaaaaaa</br>
 </div>
+</div>
+<h3>Follow up: Sorting in priority queue</h3>
+Note that the Compare parameter is defined such that <strong>it returns true if its first argument comes before its second argument in
+a weak ordering.</strong> But because the priority queue outputs largest elements first, the elements that "come before" are actually
+output last. That is, the front of the queue contains the "last" element according to the weak ordering imposed by Compare.</br>
+<b>We can use same struct to compare. vector default: ascending, 1, 2, 3, 4...  pq default, descending, 4, 3, 2, 1...</b>
 							</article>
 							</div>
 								</section>
